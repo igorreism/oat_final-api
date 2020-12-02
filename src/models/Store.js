@@ -1,12 +1,20 @@
-let itens = [];
+const mongoose = require('mongoose')
+const CatalogoSchema = new mongoose.Schema({
 
-module.exports = class Store{
-
-    static list(){
-        return itens; 
+    codigo: {
+        type: 'number'
+    },
+    nome: {
+        type: 'string'
+    },
+    descricao: {
+        type: 'string'
+    },
+    imagem: {
+        type: 'string'
     }
+})
 
-    static create(item){
-        itens.push(item);
-    }
-}
+const Store = mongoose.model('Store', CatalogoSchema)
+
+module.exports = Store

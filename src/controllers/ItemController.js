@@ -2,14 +2,14 @@ const Store = require('../models/Store');
 
 module.exports = {
 
-    list(req,res){
-        const itens = Store.list()
+    async list(req,res){
+        const itens = await Store.find()
         res.json(itens)
     },
 
-    create(req, res){
-        const item = req.body
-        Store.create(item)
-        res.json(item)
+    async create(req, res){
+        const newItem = req.body
+        const itemCreated = await Store.create(newItem)
+        res.json(itemCreated)
     }
 }
